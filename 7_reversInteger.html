@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var reverse = function(x) {
+    		// var
+    		// 	digitArray = [],
+    		// 	isNeg = false;
+    		// if(x < 0){
+    		// 	isNeg = true;
+    		// 	x = -x;
+    		// }
+    		// do{
+    		// 	digitArray.push(x%10);
+    		// 	x = Math.floor(x/10);
+    		// }while(x!=0);
+    		// x=0;
+    		// var len = digitArray.length;
+    		// for(var i=0; i<len; i++){
+    		// 	var
+    		// 		temp = 1;
+    		// 	for(var j=len-1; j>i; j--){
+    		// 		temp = temp * 10;
+    		// 	}
+    		// 	x = x + temp*digitArray[i];
+    		// }
+    		// if(isNeg){
+    		// 	return -x;
+    		// }else{
+    		// 	return x;
+    		// }
+            // var
+            //     rev = 0;
+            // while(x != 0){
+            //     rev = rev*10 + x%10;
+            //     x = Math.ceil(x/10);
+            // }
+            // return rev;
+            var
+                rev,
+                isNeg = false;
+            if(x<0){
+                x=-x;
+                isNeg = true;
+            }
+            rev = " "+x,
+            strArray = rev.split("");
+            strArray.reverse();
+            rev = strArray.join("") - 0;
+            if(isNeg){
+                if(rev > -2147483648){
+                     return -rev;
+                }
+               else{
+                   return 0;
+               }
+            }else{
+                if(rev < 2147483647){
+                     return rev;
+                }else{
+                    return 0;
+                }
+            }
+    	};
+		console.log(reverse(-2147483648))
+	</script>
+</body>
+</html>
