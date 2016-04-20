@@ -9,16 +9,33 @@
 		var
 			myAtoi = function(str){
 				var
-					nums;
+					isFirst = true;
+					nums = 0,
+					newStr = '';
 				for(var i=0; i<str.length; i++){
-					console.log(str.charCodeAt(i));
-					if(str.charCodeAt(i) === 32){
-						console.log(str.charCodeAt(i));
+					if(str.charCodeAt(i) === 32 && isFirst);
+					else if((str.charCodeAt(i)>=48 && str.charCodeAt(i)<=57) || str.charCodeAt(i)==43 || str.charCodeAt(i)==45) {
+						newStr += str[i];
+						isFirst = false;
+					}
+					else{
+						break;
 					}
 				}
+				nums = newStr - nums;
+				if(nums > 2147483647){
+					return 2147483647;
+				}
+				else if(nums < -2147483648){
+					return -2147483648;
+				}
+				if(isNaN(nums)){
+					return 0;
+				}
+				return nums;
 			}
 
-			
+		console.log(myAtoi("    010"));
 	</script>
 </body>
 </html>
