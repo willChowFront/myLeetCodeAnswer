@@ -10,10 +10,109 @@
 		 * @return {string}
 		 */
 		var intToRoman = function(num) {
-		    var
+		   var
+		    	digit= {},
+		    	temp = num,
+		    	roman = '',
 		    	rt = {
-		    		
-		    	}
+    				"I":1,
+    				"V":5,
+    				"X":10,
+    				"L":50,
+    				"C":100,
+    				"D":500,
+    				"M":1000		
+				};
+			if(Math.floor(temp/rt.M) !== 0){
+				digit.M = Math.floor(temp/rt.M);
+				temp = temp - digit.M*rt.M;
+			}
+			// if(Math.floor(temp/rt.D) !== 0){
+			// 	digit.D = Math.floor(temp/rt.D);
+			// 	temp = temp - digit.D*rt.D;
+			// }
+			if(Math.floor(temp/rt.C) !== 0){
+				digit.C = Math.floor(temp/rt.C);
+				temp = temp - digit.C*rt.C;
+			}
+			// if(Math.floor(temp/rt.L) !== 0){
+			// 	digit.L = Math.floor(temp/rt.L);
+			// 	temp = temp - digit.L*rt.L;
+			// }
+			if(Math.floor(temp/rt.X) !== 0){
+				digit.X = Math.floor(temp/rt.X);
+				temp = temp - digit.X*rt.X;
+			}
+			// if(Math.floor(temp/rt.V) !== 0){
+			// 	digit.V = Math.floor(temp/rt.V);
+			// 	temp = temp - digit.V*rt.V;
+			// }
+			if(Math.floor(temp/rt.I) !== 0){
+				digit.I = Math.floor(temp/rt.I);
+				temp = temp - digit.I*rt.I;
+			}
+
+			if(digit.M){
+				for(var i=0; i<digit.M; i++){
+					roman +='M';
+				}
+			};
+			
+			if(digit.C === 9){
+				roman += 'CM';
+			}else if(digit.C === 4){
+				roman += 'CD';
+			}else if (digit.C === 5) {
+				roman += 'D';
+			}else if (digit.C === 6) {
+				roman += 'DC';
+			}else if (digit.C === 7) {
+				roman += 'DCC';
+			}else if (digit.C === 8) {
+				roman += 'DCCC';
+			}else if(digit.C){
+				for(var i=0; i<digit.C; i++){
+					roman +='C';
+				}
+			};
+
+			if(digit.X === 9){
+				roman += 'XC';
+			}else if(digit.X === 4){
+				roman += 'XL';
+			}else if (digit.X === 5) {
+				roman += 'L';
+			}else if (digit.X === 6) {
+				roman += 'LX';
+			}else if (digit.X === 7) {
+				roman += 'LXX';
+			}else if (digit.X === 8) {
+				roman += 'LXXX';
+			}else if(digit.X){
+				for(var i=0; i<digit.X; i++){
+					roman +='X';
+				}
+			};
+
+			if(digit.I === 9){
+				roman += 'IX';
+			}else if(digit.I === 4){
+				roman += 'IV';
+			}else if (digit.I === 5) {
+				roman += 'V';
+			}else if (digit.I === 6) {
+				roman += 'VI';
+			}else if (digit.I === 7) {
+				roman += 'VII';
+			}else if (digit.I === 8) {
+				roman += 'VIII';
+			}else if(digit.I){
+				for(var i=0; i<digit.I; i++){
+					roman +='I';
+				}
+			};
+
+			return roman;
 		};
 	</script>
 </body>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var 
+			intToRoman = function(num){
+				var 
+					M = ["","M","MM","MMM"],
+					C = ["","C","CC","CCC","CD","DC","DCC","DCCC","CM"],
+					X = ["","X","XX","XXX","XL","LX","LXX","LXXX","XC"],
+					I = ["","I","II","III","IV","VI","VII","VIII","IX"],
+					roman = M[Math.floor(num/1000)]+C[Math.floor((num%1000)/100)]+X[Math.floor((num%100)/10)]+I[num%10];
+				return roman;
+			}
+	</script>
+</body>
+</html>
