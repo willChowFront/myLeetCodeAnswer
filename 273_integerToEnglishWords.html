@@ -5,7 +5,26 @@
 </head>
 <body>
 	<script type="text/javascript">
-		
+		var numberToWords = function(num) {
+    		var 
+    			result,
+    			floor = Math.floor,
+    			temp = 100,
+    			belowTwenty = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"],
+    			engTens = ["twenty","thirty","forty",'fifty',"sixty","seventy","eighty","ninety"],
+    			aboveHundred = ["hundred","thousand","million","billion"];
+    		if(num < 100){
+    			if(belowTwenty[num%100 - 1]){
+    				return belowTwenty[num%100 - 1];
+    			}else{
+    				return engTens[floor(num/10) - 2]+belowTwenty[num%10 - 1];
+    			}
+    		}
+    		while(floor(num/10) !== 0){
+
+    		}
+
+		};
 	</script>
 </body>
 </html>
