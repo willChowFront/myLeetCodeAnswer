@@ -1,9 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title></title>
 </head>
 <body>
+	<script type="text/javascript">
+		var fullJustify = function(words, maxWidth) {
+    		var 
+    			rows = 0,
+    			posi = 0,
+    			tempLen,
+    			rowStrLen,
+    			tempArray,
+    			lastItem,
+    			resultArray = [];
+    		while (posi < words.length) {
+    			tempLen = words[posi].length + 1;
+    			tempArray = [];
+    			while (tempLen-1 <= maxWidth) {
+    				rowStrLen = tempLen;
+    				tempArray = tempArray.concat(words[posi]+" ");
+    				posi ++;
+    				if(posi < words.length){
+    					tempLen = tempLen + words[posi].length + 1;
+    				}else {
+    					lastItem = tempArray[tempArray.length-1];
+    					tempArray[tempArray.length-1] = lastItem.substr(0, lastItem.length-1);
+    					tempArray.rowStrLen = rowStrLen-1;
+    					break;
+    				}	
+    			}
+    			if(posi < words.length){
+    				lastItem = tempArray[tempArray.length-1];
+    				tempArray[tempArray.length-1] = lastItem.substr(0, lastItem.length-1);
+    				tempArray.rowStrLen = rowStrLen-1;
+    			}
+    			resultArray[rows] = tempArray;
+    			rows ++;
+    		}
 
-</body>
+    		resultArray = resultArray.map(function(item, index, array){
+    			var 
+    				temp,
+    				addSpacesNum = 1,
+    				totalSpaceNum = maxWidth - item.rowStrLen;
+    			// console.log(item.rowStrLen);
+    			// console.log(totalSpaceNum);
+    			while (addSpacesNum <= totalSpaceNum) {
+    				if(index < array.length-1){
+    					item.forEach( function(element, index) {
+	    					if(index<item.length-1 && addSpacesNum<=totalSpaceNum){
+	    						item[index] += " ";
+	    						addSpacesNum ++;
+	    					}
+	    					if(item.length === 1){
+								item[index] += " ";
+	    						addSpacesNum ++;
+	    					}
+	    				});
+    				}else{
+    					console.log(item);
+    					console.log(item[item.length-1]);
+    					item[item.length-1] += " ";
+	    				addSpacesNum ++;
+    				}
+    				
+    			}
+    			temp = item.join('');
+    			// console.log(temp);
+    			// console.log(temp.length);
+    			// console.log(temp.length === maxWidth);
+    			return temp.length === maxWidth ? temp : temp.substr(0,temp.length-1);
+    		});
+
+    		console.log(resultArray);
+    		
+		};
+		// fullJustify(["This", "is", "an", "example", "of", "text", "justification."],16);
+		fullJustify(["Listen","to","many,","speak","to","a","few."],6);
+	</script>
+</body>; 
 </html>
