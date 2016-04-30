@@ -4,6 +4,43 @@
 	<title></title>
 </head>
 <body>
-
+	<script type="text/javascript">
+		/**
+		 * @param {string} s
+		 * @param {string} t
+		 * @return {boolean}
+		 */
+		var isAnagram = function(s, t) {
+		    if(s.length !== t.length){
+		    	return false;
+		    }
+		    var 
+		    	posi = 0,
+		    	sArray = s.replace(/(.)(?=[^$])/g, '$1,').split(','),
+		    	tArray = t.split("");
+		    if(bubbleSort(sArray).join('') === bubbleSort(tArray).join('')){
+		    	return true;
+		    }
+		    return false;
+		};
+		function bubbleSort (array) {
+			 var 
+			  	posi,
+			  	temp;
+			for(var i=0; i<array.length; i++){
+				posi = i;
+				while (posi<array.length) {
+					temp = array[posi];
+					if(array[posi]>array[posi+1]){
+						array[posi] = array[posi+1];
+						array[posi+1] = temp;
+					}
+					posi ++;
+				}
+			}
+			return array;
+		}
+		console.log(isAnagram("anagram", "nagaram"))
+	</script>
 </body>
 </html>
