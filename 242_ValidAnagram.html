@@ -18,7 +18,9 @@
 		    	posi = 0,
 		    	sArray = s.replace(/(.)(?=[^$])/g, '$1,').split(','),
 		    	tArray = t.split("");
-		    if(bubbleSort(sArray).join('') === bubbleSort(tArray).join('')){
+		    // console.log(bubbleSort(sArray).join(''));
+		    // console.log(bubbleSort(tArray).join(''));
+		    if(advancedBubbleSort(sArray).join('') === advancedBubbleSort(tArray).join('')){
 		    	return true;
 		    }
 		    return false;
@@ -28,10 +30,10 @@
 			  	posi,
 			  	temp;
 			for(var i=0; i<array.length; i++){
-				posi = i;
-				while (posi<array.length) {
-					temp = array[posi];
+				posi = 0;
+				while (posi<array.length-i) {
 					if(array[posi]>array[posi+1]){
+						temp = array[posi];
 						array[posi] = array[posi+1];
 						array[posi+1] = temp;
 					}
@@ -39,8 +41,26 @@
 				}
 			}
 			return array;
+		};
+
+		function advancedBubbleSort(array) {
+			var 
+				temp,posi,
+				tag=array.length-1;
+			for(var i=0; i<array.length; i++){
+			 	for(var j=0; j<tag; j++){
+			 		if(array[j] > array[j+1]){
+			 			posi = j;
+			 			temp = array[j];
+			 			array[j] = array[j+1];
+			 			array[j+1] = temp;
+			 		}
+			 	}
+			 	tag = posi;
+			 }
+			 return array;
 		}
-		console.log(isAnagram("anagram", "nagaram"))
+		console.log(isAnagram("", ""))
 	</script>
 </body>
 </html>
